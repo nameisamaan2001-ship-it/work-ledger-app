@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Inject build number
+        run: sed -i "s/__BUILD__/${{ github.run_number }}/g" app/src/main/assets/index.html
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
